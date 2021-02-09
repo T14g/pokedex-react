@@ -1,11 +1,12 @@
 import { React, useEffect } from 'react';
 import { PokedexCase, PokedexScreen } from './pokedex.styles';
-import { PokemonList } from '../pokemonList/pokemonList.component';
+import PokemonList from '../pokemonList/pokemonList.component';
+import PokemonDetails from '../pokemonDetails/pokemonDetails.component';
 
 import { connect } from 'react-redux';
 import { savePokemons } from '../../redux/pokemon/pokemon.actions';
 
-const Pokedex = ({ savePokemonsState, pokemonList, offset }) => {
+const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails }) => {
 
     //Faz o fetch inicial de 100 pokemons, apenas uma única vez
     useEffect(() => {
@@ -60,7 +61,9 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset }) => {
     return (
         <PokedexCase>
             <PokedexScreen id="pokedexScroll" onScroll={handleScroll}>
-                <PokemonList list={pokemonList} />
+                {
+                    !viewDetails ? <PokemonList list={pokemonList} /> : <PokemonDetails />
+                }
             </PokedexScreen>
         </PokedexCase>
     )
@@ -74,7 +77,8 @@ const mapDispatchToProps = dispatch => ({
 //Acesso ao state
 const mapStateToProps = state => ({
     pokemonList: state.pokemon.pokemons,
-    offset: state.pokemon.offset
+    offset: state.pokemon.offset,
+    viewDetails: state.pokemon.viewDetails
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokedex);

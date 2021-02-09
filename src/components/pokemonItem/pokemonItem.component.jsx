@@ -1,13 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { pokemonDetails } from '../../redux/pokemon/pokemon.actions';
+
+import { PokemonTypes } from '../pokemonTypes/pokemonTypes.component';
+
 import { PokemonContainer, PokemonImg, UnknowPokemon } from './pokemonItem.styles';
 
-export const PokemonItem = ({ pokemon }) => (
-    <PokemonContainer>
+const PokemonItem = ({ pokemon, viewDetails }) => (
+    <PokemonContainer
+        onClick={() => viewDetails(pokemon)}
+    >
         {
             pokemon.sprites.front_default !== null ?
                 (<PokemonImg src={pokemon.sprites.front_default} alt={pokemon.name} />) :
                 (<UnknowPokemon>?</UnknowPokemon>)
         }
         <span>{pokemon.name}</span>
+        <PokemonTypes types={pokemon.types} />
     </PokemonContainer>
 );
+
+const mapDispatchToProps = dispatch => ({
+    viewDetails: (pokemon => dispatch(pokemonDetails(pokemon)))
+})
+
+export default connect(null, mapDispatchToProps)(PokemonItem);

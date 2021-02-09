@@ -1,7 +1,7 @@
 import React from 'react';
-import { PokemonItem } from '../pokemonItem/pokemonItem.component';
+import PokemonItem from '../pokemonItem/pokemonItem.component';
 
-export const PokemonList = ({ list }) => {
+const PokemonList = ({ list }) => {
     return (
         <div className="pokemon-list">
             {
@@ -15,3 +15,4 @@ export const PokemonList = ({ list }) => {
     );
 }
 
+export default PokemonList;
