@@ -1,18 +1,17 @@
 import PokemonActionTypes from './pokemon.types';
 
 const INITIAL_STATE = {
-    pokemons : [],
-    limit: 100,
-    offset: 0
+    pokemons: [],
+    offset: 100
 }
 
-const pokemonReducer = ( state = INITIAL_STATE, action) => {
-    switch(action.type){
+const pokemonReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
         case PokemonActionTypes.SAVE_POKEMONS:
             return {
                 ...state,
-                pokemons: action.payload,
-                offset : state.offset + 100
+                pokemons: [...state.pokemons, ...action.payload],
+                offset: state.offset + 100
             }
 
         default:

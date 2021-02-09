@@ -1,4 +1,4 @@
-const PokemonActionTypes = { 
+const PokemonActionTypes = {
     SAVE_POKEMONS: 'SAVE_POKEMONS'
 }
 

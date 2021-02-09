@@ -1,9 +1,13 @@
 import React from 'react';
-import { PokemonContainer, PokemonImg } from './pokemonItem.styles';
+import { PokemonContainer, PokemonImg, UnknowPokemon } from './pokemonItem.styles';
 
-export const PokemonItem = ({pokemon}) => (
+export const PokemonItem = ({ pokemon }) => (
     <PokemonContainer>
-        <PokemonImg src={pokemon.sprites.front_default} alt={pokemon.name}/>
+        {
+            pokemon.sprites.front_default !== null ?
+                (<PokemonImg src={pokemon.sprites.front_default} alt={pokemon.name} />) :
+                (<UnknowPokemon>?</UnknowPokemon>)
+        }
         <span>{pokemon.name}</span>
     </PokemonContainer>
 );
