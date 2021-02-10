@@ -36,3 +36,7 @@ export const UnknowPokemon = styled.div`
         background: #fff;
     }
 `
+
+export const PokemonName = styled.div`
+
+`

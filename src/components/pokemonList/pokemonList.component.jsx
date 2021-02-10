@@ -7,7 +7,7 @@ const PokemonList = ({ list }) => {
             {
                 list.length > 0 ? (
                     list.map(pokemon => {
-                        return (<PokemonItem key={pokemon.name} pokemon={pokemon} />)
+                        return (<PokemonItem key={pokemon.id} pokemon={pokemon} />)
                     })
                 ) : null
             }

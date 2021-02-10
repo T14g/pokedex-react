@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { DetailsContainer } from './pokemonDetails.styles';
+import { PokemonSprites } from '../pokemonSprites/pokemonSprites.component';
+import { PokemonInfo } from '../pokemonInfo/pokemonInfo.component';
 
 const PokemonDetails = ({ pokemonData }) => {
     return (
-        <div>
-            <h2>Detalhes do pokemon</h2>
-        </div>
+        <DetailsContainer>
+            <PokemonSprites sprites={pokemonData.sprites} />
+            <PokemonInfo pokemonData={pokemonData} />
+        </DetailsContainer>
     );
 }
 

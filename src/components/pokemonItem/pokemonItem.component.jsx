@@ -4,7 +4,7 @@ import { pokemonDetails } from '../../redux/pokemon/pokemon.actions';
 
 import { PokemonTypes } from '../pokemonTypes/pokemonTypes.component';
 
-import { PokemonContainer, PokemonImg, UnknowPokemon } from './pokemonItem.styles';
+import { PokemonContainer, PokemonImg, UnknowPokemon, PokemonName } from './pokemonItem.styles';
 
 const PokemonItem = ({ pokemon, viewDetails }) => (
     <PokemonContainer
@@ -15,7 +15,7 @@ const PokemonItem = ({ pokemon, viewDetails }) => (
                 (<PokemonImg src={pokemon.sprites.front_default} alt={pokemon.name} />) :
                 (<UnknowPokemon>?</UnknowPokemon>)
         }
-        <span>{pokemon.name}</span>
+        <PokemonName>{pokemon.name}</PokemonName>
         <PokemonTypes types={pokemon.types} />
     </PokemonContainer>
 );

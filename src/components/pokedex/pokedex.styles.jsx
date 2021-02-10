@@ -13,7 +13,7 @@ export const PokedexCase = styled.div`
 `
 
 export const PokedexScreen = styled.div`
-    padding-top: 20px;
+    padding: 15px;;
     background: #71C6C5;
     height 400px;
     width: 900px;
