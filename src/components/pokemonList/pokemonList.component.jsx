@@ -1,9 +1,10 @@
 import React from 'react';
+import { List } from './pokemonList.styles';
 import PokemonItem from '../pokemonItem/pokemonItem.component';
 
 const PokemonList = ({ list }) => {
     return (
-        <div className="pokemon-list">
+        <List>
             {
                 list.length > 0 ? (
                     list.map(pokemon => {
@@ -11,7 +12,7 @@ const PokemonList = ({ list }) => {
                     })
                 ) : null
             }
-        </div>
+        </List>
     );
 }
 

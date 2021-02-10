@@ -1,12 +1,13 @@
 import { React, useEffect } from 'react';
 import { PokedexCase, PokedexScreen } from './pokedex.styles';
+import { CustomButton } from '../customButton/customButton.component';
 import PokemonList from '../pokemonList/pokemonList.component';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.component';
 
 import { connect } from 'react-redux';
-import { savePokemons } from '../../redux/pokemon/pokemon.actions';
+import { savePokemons, loadHome } from '../../redux/pokemon/pokemon.actions';
 
-const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails }) => {
+const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome }) => {
 
     //Faz o fetch inicial de 100 pokemons, apenas uma única vez
     useEffect(() => {
@@ -65,13 +66,15 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails }) => {
                     !viewDetails ? <PokemonList list={pokemonList} /> : <PokemonDetails />
                 }
             </PokedexScreen>
+            <CustomButton name="Back" show={viewDetails} onClickFn={loadHome} />
         </PokedexCase>
     )
 }
 
 //Despachantes de actions
 const mapDispatchToProps = dispatch => ({
-    savePokemonsState: pokemons => dispatch(savePokemons(pokemons))
+    savePokemonsState: pokemons => dispatch(savePokemons(pokemons)),
+    loadHome: () => dispatch(loadHome())
 })
 
 //Acesso ao state

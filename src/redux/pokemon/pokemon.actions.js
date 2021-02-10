@@ -9,3 +9,7 @@ export const pokemonDetails = pokemon => ({
     type: PokemonActionTypes.POKEMON_DETAILS,
     payload: pokemon
 });
+
+export const loadHome = () => ({
+    type: PokemonActionTypes.LOAD_HOME
+});

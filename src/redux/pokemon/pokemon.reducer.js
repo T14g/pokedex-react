@@ -22,6 +22,13 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
                 selectedPokemon: action.payload,
                 viewDetails: true
             }
+        
+        case PokemonActionTypes.LOAD_HOME:
+            return {
+                ...state,
+                selectedPokemon: null,
+                viewDetails: false
+            }
 
         default:
             return state;
