@@ -13,3 +13,12 @@ export const pokemonDetails = pokemon => ({
 export const loadHome = () => ({
     type: PokemonActionTypes.LOAD_HOME
 });
+
+export const showLoader = () => ({
+    type: PokemonActionTypes.SHOW_LOADER
+});
+
+export const hideLoader = () => ({
+    type: PokemonActionTypes.HIDE_LOADER
+});
+

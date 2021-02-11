@@ -1,13 +1,23 @@
 import { React, useEffect } from 'react';
 import { PokedexCase, PokedexScreen } from './pokedex.styles';
 import { CustomButton } from '../customButton/customButton.component';
+import { Loader } from '../loader/loader.component';
 import PokemonList from '../pokemonList/pokemonList.component';
 import PokemonDetails from '../pokemonDetails/pokemonDetails.component';
 
 import { connect } from 'react-redux';
-import { savePokemons, loadHome } from '../../redux/pokemon/pokemon.actions';
+import { savePokemons, loadHome, showLoader, hideLoader } from '../../redux/pokemon/pokemon.actions';
 
-const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome }) => {
+const Pokedex = ({
+    savePokemonsState,
+    pokemonList,
+    offset,
+    viewDetails,
+    loadHome,
+    loading,
+    showLoader,
+    hideLoader
+}) => {
 
     //Faz o fetch inicial de 100 pokemons, apenas uma única vez
     useEffect(() => {
@@ -23,15 +33,18 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome
     //Verifica se chegou no final do scroll Y e carrega mais pokemons
     const handleScroll = (e) => {
 
-        let element = e.target;
+        if (!viewDetails) {
+            let element = e.target;
 
-        if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-            fetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
-                .then(response => response.json())
-                .then(pokemons => {
-                    savePokeDetails(pokemons.results);
-                })
+            if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+                fetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
+                    .then(response => response.json())
+                    .then(pokemons => {
+                        savePokeDetails(pokemons.results);
+                    })
+            }
         }
+
     }
 
     //Busca detalhes de cada pokemon
@@ -49,6 +62,8 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome
     //Salva as informações detalhadas dos pokemons
     const savePokeDetails = (pokemons) => {
 
+        //Dispara a action que vai exibir o loader
+        showLoader();
         const promises = pokemons.map(pokemon => fetchPokeDetails(pokemon.url));
 
         Promise.all(promises).then(results => {
@@ -56,16 +71,20 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome
             const filteredResults = results.filter(result => result !== null);
             savePokemonsState(filteredResults);
 
+            //Dispara a action que vai esconder o loader
+            hideLoader();
+
         })
     }
 
     return (
         <PokedexCase>
-            <PokedexScreen id="pokedexScroll" onScroll={handleScroll}>
+            <PokedexScreen id="pokedexScreen" loading={loading.toString()} onScroll={handleScroll}>
                 {
                     !viewDetails ? <PokemonList list={pokemonList} /> : <PokemonDetails />
                 }
             </PokedexScreen>
+            <Loader loading={loading.toString()} />
             <CustomButton name="Back" show={viewDetails} onClickFn={loadHome} />
         </PokedexCase>
     )
@@ -74,14 +93,17 @@ const Pokedex = ({ savePokemonsState, pokemonList, offset, viewDetails, loadHome
 //Despachantes de actions
 const mapDispatchToProps = dispatch => ({
     savePokemonsState: pokemons => dispatch(savePokemons(pokemons)),
-    loadHome: () => dispatch(loadHome())
+    loadHome: () => dispatch(loadHome()),
+    showLoader: () => dispatch(showLoader()),
+    hideLoader: () => dispatch(hideLoader()),
 })
 
 //Acesso ao state
 const mapStateToProps = state => ({
     pokemonList: state.pokemon.pokemons,
     offset: state.pokemon.offset,
-    viewDetails: state.pokemon.viewDetails
+    viewDetails: state.pokemon.viewDetails,
+    loading: state.pokemon.loading
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokedex);

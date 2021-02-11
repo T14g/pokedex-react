@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     pokemons: [],
     offset: 100,
     viewDetails : false,
-    selectedPokemon: null
+    selectedPokemon: null,
+    loading: false
 }
 
 const pokemonReducer = (state = INITIAL_STATE, action) => {
@@ -28,6 +29,18 @@ const pokemonReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 selectedPokemon: null,
                 viewDetails: false
+            }
+        
+        case PokemonActionTypes.SHOW_LOADER:
+            return {
+                ...state,
+                loading: true
+            }
+
+        case PokemonActionTypes.HIDE_LOADER:
+            return {
+                ...state,
+                loading: false
             }
 
         default:

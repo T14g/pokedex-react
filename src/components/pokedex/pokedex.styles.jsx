@@ -14,12 +14,13 @@ export const PokedexCase = styled.div`
 `
 
 export const PokedexScreen = styled.div`
-    padding: 15px;;
+    padding: 15px;
     background: #71C6C5;
     height 400px;
     width: 900px;
     margin: 0 auto;
     -webkit-box-shadow: inset 5px 5px 15px -3px #000000; 
     box-shadow: inset 5px 5px 15px -3px #000000;
-    overflow: auto;
+    overflow: ${ props => props.loading === true ? 'hidden' : 'auto' };
+    position: relative;
 `

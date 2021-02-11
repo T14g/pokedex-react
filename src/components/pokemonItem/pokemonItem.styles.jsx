@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PokemonContainer = styled.div`
     float:left;
     width: 155px;
-    height: 160px;
+    height: 180px;
     background:#fff; 
     margin: 0 10px 10px;
     border-radius: 10px;
