@@ -15,7 +15,7 @@ const PokemonItem = ({ pokemon, viewDetails }) => (
                 (<PokemonImg src={pokemon.sprites.front_default} alt={pokemon.name} />) :
                 (<UnknowPokemon>?</UnknowPokemon>)
         }
-        <PokemonName>{pokemon.name}</PokemonName>
+        <PokemonName>{pokemon.name} #{pokemon.id}</PokemonName>
         <PokemonTypes types={pokemon.types} />
     </PokemonContainer>
 );

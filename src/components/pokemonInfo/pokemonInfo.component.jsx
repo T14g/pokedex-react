@@ -2,10 +2,11 @@ import React from 'react';
 import { InfoContainer, PokemonName } from './pokemonInfo.styles';
 import { PokemonTypes } from '../pokemonTypes/pokemonTypes.component';
 import { PokemonInfoList } from '../pokemonInfoList/pokemonInfoList.component';
+import  PokemonEvolutions  from '../pokemonEvolutions/pokemonEvolutions.component';
 
 export const PokemonInfo = ({ pokemonData }) => {
 
-    let abilityNames = [], movesNames = [];
+    let abilityNames = [], movesNames = [], species = pokemonData.species;
 
     //Formata os nomes deixando capitalized
     pokemonData.abilities.map(item => {
@@ -27,6 +28,7 @@ export const PokemonInfo = ({ pokemonData }) => {
             <PokemonTypes types={pokemonData.types} />
             <PokemonInfoList color="green" title="Pokemon Abilities" data={abilityNames} />
             <PokemonInfoList color="red" title="Pokemon Moves" data={movesNames} />
+            <PokemonEvolutions  data={ species }/>
         </InfoContainer>
     );
 }

@@ -8,7 +8,7 @@ export const PokemonInfoList = ({ title, color, data }) => {
 
     return (
         <Container>
-            <Title>{title}</Title>
+            { infoArray.length > 0 ? <Title>{title}</Title> : null}
 
             <InfoContainer>
                 {
