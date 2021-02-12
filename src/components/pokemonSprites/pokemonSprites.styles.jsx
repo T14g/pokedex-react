@@ -8,6 +8,14 @@ export const SpritesContainer = styled.div`
     padding: 5px;
     border-radius: 5px;
     float: left;
+
+    @media(max-width: 1200px){
+        width: 150px;
+    }
+
+    @media(max-width: 800px){
+        width: 200px;
+    }
 `
 
 export const BigSprite = styled.img`
@@ -42,6 +50,14 @@ export const BigContainer = styled.div`
     border: 1px #000 solid;
     min-height: 122px;
     width: 222px;
+
+    @media(max-width: 1200px){
+        width: 148px;
+    }
+
+    @media(max-width: 800px){
+        width: 195px;
+    }
 `
 
 export const MiniContainer = styled.div`
@@ -62,5 +78,10 @@ export const MiniSprite = styled.img`
 
     &:not(:last-child){
         margin-right: 5px;
+    }
+
+    @media(max-width: 800px){
+        height: 33px;
+        width: 33px
     }
 `

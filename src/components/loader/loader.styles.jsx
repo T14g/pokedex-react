@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const LoaderOverlay = styled.div`
   height: 432px;
@@ -11,6 +11,17 @@ export const LoaderOverlay = styled.div`
   z-index: 9999;
   top: 69px;
   background: rgba(0,0,0,0.7);
+
+  @media(max-width: 1200px){
+    width:732px;
+  }
+
+  @media(max-width: 800px){
+    width: 263px;
+    margin-left: 24px;
+  }
+
+  
 `
 
 export const LoaderContainer = styled.div`

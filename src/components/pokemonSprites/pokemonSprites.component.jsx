@@ -12,14 +12,14 @@ export const PokemonSprites = ({ sprites }) => {
 
     const frontDefault = sprites.front_default;
     const validSprites = Object.values(sprites).filter(s => s !== null && typeof (s) === 'string');
-    console.log(sprites);
+
 
     return (
         <SpritesContainer>
 
             <BigContainer>
-                { frontDefault !== null ? <BigSprite src={frontDefault} /> 
-                : <UnknowPokemon>?</UnknowPokemon>}
+                {frontDefault !== null ? <BigSprite src={frontDefault} />
+                    : <UnknowPokemon>?</UnknowPokemon>}
             </BigContainer>
 
             <MiniContainer>

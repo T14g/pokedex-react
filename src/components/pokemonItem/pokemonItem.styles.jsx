@@ -8,6 +8,12 @@ export const PokemonContainer = styled.div`
     margin: 0 10px 10px;
     border-radius: 10px;
     text-align: center;
+
+    @media(max-width: 800px){
+        float: none;
+        margin: 0 auto 10px;
+        width: 200px;
+    }
 `
 
 export const PokemonImg = styled.img`

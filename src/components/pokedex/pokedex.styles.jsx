@@ -11,6 +11,15 @@ export const PokedexCase = styled.div`
     -webkit-box-shadow: 1px 5px 15px 5px #000000; 
     box-shadow: 1px 5px 15px 5px #000000;
     padding-top: 50px;
+
+    @media(max-width: 1200px){
+        max-width: 800px;
+    }
+
+    @media(max-width: 800px){
+        max-width: 310px;
+        height: 520px;
+    }
 `
 
 export const PokedexScreen = styled.div`
@@ -23,4 +32,12 @@ export const PokedexScreen = styled.div`
     box-shadow: inset 5px 5px 15px -3px #000000;
     overflow: ${ props => props.loading === true ? 'hidden' : 'auto' };
     position: relative;
+
+    @media(max-width: 1200px){
+        width: 700px;
+    }
+
+    @media(max-width: 800px){
+        width: 233px;
+    }
 `

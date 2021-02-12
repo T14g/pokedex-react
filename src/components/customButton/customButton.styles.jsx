@@ -24,4 +24,10 @@ export const Button = styled.button`
         background: blue;
         cursor: pointer;
     }
+
+    @media(max-width: 800px){
+        float: none;
+        max-width: 265px;
+        margin: 10px auto;
+    }
 `
