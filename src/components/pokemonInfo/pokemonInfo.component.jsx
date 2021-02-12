@@ -6,7 +6,7 @@ import  PokemonEvolutions  from '../pokemonEvolutions/pokemonEvolutions.componen
 
 export const PokemonInfo = ({ pokemonData }) => {
 
-    let abilityNames = [], movesNames = [], species = pokemonData.species;
+    let abilityNames = [], movesNames = [], statsArray = [], species = pokemonData.species;
 
     //Formata os nomes deixando capitalized
     pokemonData.abilities.map(item => {
@@ -22,10 +22,21 @@ export const PokemonInfo = ({ pokemonData }) => {
         movesNames.push(name);
     })
 
+    //Extrai os stats do pokemon
+    pokemonData.stats.map(item => {
+        let name = item.stat.name.toUpperCase();
+        let value = item.base_stat;
+        let statStr = `${name} ${value}/100`;
+        statsArray.push(statStr);
+    })
+    
+    console.log(statsArray);
+
     return (
         <InfoContainer>
             <PokemonName>{pokemonData.name} #{pokemonData.id}</PokemonName>
             <PokemonTypes types={pokemonData.types} />
+            <PokemonInfoList color="#000" title="Pokemon Stats" data={statsArray} />
             <PokemonInfoList color="green" title="Pokemon Abilities" data={abilityNames} />
             <PokemonInfoList color="red" title="Pokemon Moves" data={movesNames} />
             <PokemonEvolutions  data={ species }/>

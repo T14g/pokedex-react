@@ -79,7 +79,7 @@ const Pokedex = ({
 
     return (
         <PokedexCase>
-            <PokedexScreen id="pokedexScreen" loading={loading.toString()} onScroll={handleScroll}>
+            <PokedexScreen loading={loading.toString()} onScroll={handleScroll}>
                 {
                     !viewDetails ? <PokemonList list={pokemonList} /> : <PokemonDetails />
                 }
