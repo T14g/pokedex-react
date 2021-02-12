@@ -2,7 +2,7 @@ import React from 'react';
 import { InfoContainer, PokemonName } from './pokemonInfo.styles';
 import { PokemonTypes } from '../pokemonTypes/pokemonTypes.component';
 import { PokemonInfoList } from '../pokemonInfoList/pokemonInfoList.component';
-import  PokemonEvolutions  from '../pokemonEvolutions/pokemonEvolutions.component';
+import PokemonEvolutions from '../pokemonEvolutions/pokemonEvolutions.component';
 
 export const PokemonInfo = ({ pokemonData }) => {
 
@@ -29,8 +29,7 @@ export const PokemonInfo = ({ pokemonData }) => {
         let statStr = `${name} ${value}/100`;
         statsArray.push(statStr);
     })
-    
-    console.log(statsArray);
+
 
     return (
         <InfoContainer>
@@ -39,7 +38,7 @@ export const PokemonInfo = ({ pokemonData }) => {
             <PokemonInfoList color="#000" title="Pokemon Stats" data={statsArray} />
             <PokemonInfoList color="green" title="Pokemon Abilities" data={abilityNames} />
             <PokemonInfoList color="red" title="Pokemon Moves" data={movesNames} />
-            <PokemonEvolutions  data={ species }/>
+            <PokemonEvolutions data={species} />
         </InfoContainer>
     );
 }
