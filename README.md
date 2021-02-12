@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Pokedex usando React & Redux by Tiago Oliveira ( T14g )
+## Como rodar o projeto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Faça um npm install para instalar as dependências do projeto e em seguida rode com npm start para rodar em modo de desenvolvimento.
 
-## Available Scripts
+## Libs usadas no projeto
+- "react-dom"
+- "react-redux"
+- "react-scripts
+- "redux"
+## Libs Extras
+- "redux-logger" ( para ir testando durante o desenvolvimento )
+- "styled-components" ( para componentizar o estilo )
 
-In the project directory, you can run:
 
-### `npm start`
+## Sobre o projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O projeto visa acessar a API de pokemons e listar com scroll infinito todos os pokemons, exibindo inicialmente algumas informações básicas como imagem, nome, número e tipos.
+Foi criado com um mindset de componentes, usando o styled-components para também componentizar o estilo.
+Ao clicar em um pokemon o usuário pode ver detalhes do mesmo, e caso deseje pode voltar a tela inicial clicando no botão Back que apareça se o usuário estiver vendo detalhes.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O usuário pode também clicar em uma das evoluções do pokemon na tela de detalhes fazendo com que a aplicação renderize as informações do pokemon clicado.
 
-### `npm test`
+## Soluções desenvolvidas
+Foi criada uma solução de bloqueio de tela que evita que o usuário fique fazendo scroll enquanto a chamada de GET estiver sendo realizada, nessa solução é disparada uma action para o reducer alterar o state e bloquear o scroll e exibir um componente de Loading... até o Fetch ser concluído.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Houve também um aproveitamento de chamadas na API pois para exibir as informações na tela inicial como tipo,nome,id já é feita uma chamada para retornar os detalhes, estes que são salvos no state e sendo usados depois na tela de detalhes onde mais detalhes são exibidos.
 
-### `npm run build`
+## Sobre ciclos de vida de componentes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Bom, ciclos de vida de um componente são eventos que acontecem entre o nascimento e o fim de um componente.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Há basicamente três etapas:
+-Mounting - quando o componente nasce.
+-Update : quando por exemplo as props ou state mudam.
+-Unmount : o fim do componente.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Render() é o principal método de ciclo de vida, que acontece no surgimento do componente e quando ele é atualizado.
 
-### `npm run eject`
+Temos também o componentDidMount(), que pode "imitado" com React Hooks, que foi o caso neste projeto no componente Pokedex onde há uma chamada para API após o componente renderizar, carregando os dados dos pokemons para dar sequência.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Temos ainda a fase onde o componente irá alterar algo na DOM devido a alterações de props ou state, pode ser o usado o componentDidUpdate() aqui para realizar algo logo após o componente atualizar devido a mudanças.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Por último vem a fase de unmount onde você pode por exemplo excluir dados antes do componente desaparecer com o componentWillUnmount() por exemplo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Sobre performance
 
-## Learn More
+1) Um ponto que gostaria de citar foi ter bloqueado o scroll enquanto o fetch de um scroll anterior é feito, assim evita problemas da aplicação ficar fazendo requests a todo momento e causar erros.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2) Foi tratado um problema quando o fetch do pokemon retornava 404 e quebrava o scroll dos outros.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3) Os detalhes do pokemon não são buscados em uma nova requisição quando o usuário clica para ver detalhes mas sim buscados no state onde ficam salvos desde a renderização inicial do pokemon na listagem, salvando assim uma requisição.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Sobre o tempo
+Foquei no que julguei como o principal dentro desses 5 dias para realizar desafio, conforme combinado.
+Não fiquei full time neste projeto pois eu tinha alguns compromissos  durante a semana, acredito que Fui fazendo partes, componentes conforme surgia tempo, um pouco de manhã, um pouco de tarde, um pouco de noite um pouco de madrugada.
 
-### Analyzing the Bundle Size
+Acredito que se tivesse tido 7 dias poderia ter melhorado alguns pontos no projeto.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Obrigado e tenham um bom dia.

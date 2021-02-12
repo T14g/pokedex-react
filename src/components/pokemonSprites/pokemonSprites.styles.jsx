@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const SpritesContainer = styled.div`
     border: 1px #c6c6c6 solid;
-    min-height: 180px;
     width: 228px;
     background: #fff;
     position: relative;
@@ -14,6 +13,29 @@ export const SpritesContainer = styled.div`
 export const BigSprite = styled.img`
     display: block;
     margin: 10px auto 0;
+`
+
+export const UnknowPokemon = styled.div`
+    width: 50px;
+    height: 50px;
+    margin: 35px auto 0;
+    background: #BF0C0C;
+    border-radius: 50%;
+    position:relative;
+    font-size: 35px;
+    color: #fff;
+    line-height: 47px;
+    text-align:center;
+
+    &::before{
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 2px;
+        left: 0;
+        top: 25px;
+        background: #fff;
+    }
 `
 
 export const BigContainer = styled.div`

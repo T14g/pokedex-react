@@ -4,19 +4,22 @@ import {
     MiniSprite,
     BigSprite,
     BigContainer,
-    MiniContainer
+    MiniContainer,
+    UnknowPokemon
 } from './pokemonSprites.styles';
 
 export const PokemonSprites = ({ sprites }) => {
 
     const frontDefault = sprites.front_default;
     const validSprites = Object.values(sprites).filter(s => s !== null && typeof (s) === 'string');
+    console.log(sprites);
 
     return (
         <SpritesContainer>
 
             <BigContainer>
-                <BigSprite src={frontDefault} />
+                { frontDefault !== null ? <BigSprite src={frontDefault} /> 
+                : <UnknowPokemon>?</UnknowPokemon>}
             </BigContainer>
 
             <MiniContainer>

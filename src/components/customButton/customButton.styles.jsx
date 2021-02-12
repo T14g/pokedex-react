@@ -11,8 +11,14 @@ export const Button = styled.button`
     float: right;
     margin-right: 35px;
     margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
 
     display: ${props => props.show === false ? 'none' : 'block'};
+
+    &:active{
+        outline:none;
+    }
     
     &:hover{
         background: blue;

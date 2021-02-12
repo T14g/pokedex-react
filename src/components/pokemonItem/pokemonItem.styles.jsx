@@ -38,7 +38,8 @@ export const UnknowPokemon = styled.div`
 `
 
 export const PokemonName = styled.div`
-    font-size: 16px;
+    font-size: 14px;
+    padding: 0 5px;
     font-weight: 600;
     text-transform: capitalize;
     text-transform: uppercase;
