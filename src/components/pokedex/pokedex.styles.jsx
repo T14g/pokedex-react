@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const RollUpAnimation = keyframes`
+ 0% { heigth: 100% }
+ 100% { height: 0 }
+`
+
+const FadeOutAnimation = keyframes`
+    0% {opacity: 1}
+    100% {opacity: 0}
+`
 
 export const PokedexCase = styled.div`
     background: #BF0C0C;
@@ -24,7 +34,7 @@ export const PokedexCase = styled.div`
 
 export const PokedexScreen = styled.div`
     padding: 15px;
-    background: #71C6C5;
+    background: ${ props => props.hasPokemons > 0  ? '#71C6C5' : '#000' };
     height 400px;
     width: 900px;
     margin: 0 auto;
@@ -39,5 +49,42 @@ export const PokedexScreen = styled.div`
 
     @media(max-width: 800px){
         width: 233px;
+    }
+
+    &::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        background: #920c0c;
+        -webkit-box-shadow: inset 1px 1px 4px 2px #000000; 
+        box-shadow: inset 1px 1px 4px 2px #000000;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        z-index: 9998;
+
+        animation: ${RollUpAnimation} 3s 2s;
+        animation-fill-mode: forwards;
+    }
+
+    &::before{
+        content: "Pokedex Infinity  By : T14g";
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        top: 140px;
+        width: 100%;
+        max-width: 450px;
+        height: 200px;
+        left: calc(50% - 225px);
+        display: block;
+        z-index: 9999;
+        font-family: 'VT323', monospace;
+        font-size: 70px;
+        text-transform: uppercase;
+
+        animation: ${FadeOutAnimation} 3s;
+        animation-fill-mode: forwards;
     }
 `

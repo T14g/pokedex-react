@@ -19,16 +19,16 @@ const Pokedex = ({
     hideLoader
 }) => {
 
-    //Faz o fetch inicial de 100 pokemons, apenas uma única vez
-    useEffect(() => {
-
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
-            .then(response => response.json())
-            .then(pokemons => {
-                savePokeDetails(pokemons.results)
-            })
-
-    }, []);
+    // Faz o fetch inicial de 100 pokemons, apenas uma única vez
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
+    //             .then(response => response.json())
+    //             .then(pokemons => {
+    //                 savePokeDetails(pokemons.results)
+    //             })
+    //     }, 5000);
+    // }, []);
 
     //Verifica se chegou no final do scroll Y e carrega mais pokemons
     const handleScroll = (e) => {
@@ -79,7 +79,7 @@ const Pokedex = ({
 
     return (
         <PokedexCase>
-            <PokedexScreen loading={loading.toString()} onScroll={handleScroll}>
+            <PokedexScreen loading={loading.toString()} onScroll={handleScroll} hasPokemons={pokemonList.length}>
                 {
                     !viewDetails ? <PokemonList list={pokemonList} /> : <PokemonDetails />
                 }

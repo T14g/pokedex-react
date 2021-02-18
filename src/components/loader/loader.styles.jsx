@@ -8,7 +8,7 @@ export const LoaderOverlay = styled.div`
   display: ${props => props.loading === 'true' ? 'block' : 'none'};
   align-items: center;
   position: absolute;
-  z-index: 9999;
+  z-index: 9995;
   top: 69px;
   background: rgba(0,0,0,0.7);
 
