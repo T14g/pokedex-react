@@ -1,5 +1,5 @@
 import { React, useEffect } from 'react';
-import { PokedexCase, PokedexScreen } from './pokedex.styles';
+import { PokedexCase, PokedexScreen, ButtonContainer, ButtonInner } from './pokedex.styles';
 import { CustomButton } from '../customButton/customButton.component';
 import { Loader } from '../loader/loader.component';
 import PokemonList from '../pokemonList/pokemonList.component';
@@ -20,15 +20,15 @@ const Pokedex = ({
 }) => {
 
     // Faz o fetch inicial de 100 pokemons, apenas uma única vez
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
-    //             .then(response => response.json())
-    //             .then(pokemons => {
-    //                 savePokeDetails(pokemons.results)
-    //             })
-    //     }, 5000);
-    // }, []);
+    useEffect(() => {
+        setTimeout(() => {
+            fetch('https://pokeapi.co/api/v2/pokemon?limit=100')
+                .then(response => response.json())
+                .then(pokemons => {
+                    savePokeDetails(pokemons.results)
+                })
+        }, 5000);
+    }, []);
 
     //Verifica se chegou no final do scroll Y e carrega mais pokemons
     const handleScroll = (e) => {
@@ -86,6 +86,9 @@ const Pokedex = ({
             </PokedexScreen>
             <Loader loading={loading.toString()} />
             <CustomButton name="Back" show={viewDetails} onClickFn={loadHome} />
+            <ButtonContainer>
+                <ButtonInner />
+            </ButtonContainer>
         </PokedexCase>
     )
 }

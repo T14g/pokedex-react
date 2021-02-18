@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     SpritesContainer,
     MiniSprite,
@@ -10,22 +10,31 @@ import {
 
 export const PokemonSprites = ({ sprites }) => {
 
-    const frontDefault = sprites.front_default;
-    const validSprites = Object.values(sprites).filter(s => s !== null && typeof (s) === 'string');
+    const [ compState, setCompState ] = useState({ bigImg: '', otherImgs : [] });
 
+    useEffect(()=>{
+        let validSprites = Object.values(sprites).filter(s => s !== null && typeof (s) === 'string');
+        setCompState({bigImg: sprites.front_default, otherImgs : validSprites});
+    },[sprites]);
+
+    const { bigImg, otherImgs } = compState;
+
+    const setBigImg = (e) =>{
+        setCompState({ ...compState, bigImg: e.target.src});
+    }
 
     return (
         <SpritesContainer>
 
             <BigContainer>
-                {frontDefault !== null ? <BigSprite src={frontDefault} />
+                {bigImg !== null ? <BigSprite src={bigImg} />
                     : <UnknowPokemon>?</UnknowPokemon>}
             </BigContainer>
 
             <MiniContainer>
                 {
-                    validSprites.map((sprite, index) => {
-                        return <MiniSprite key={index} src={sprite} />
+                    otherImgs.map((sprite, index) => {
+                        return <MiniSprite onClick={(e) => setBigImg(e) } key={index} src={sprite} />
                     })
                 }
             </MiniContainer>

@@ -84,4 +84,8 @@ export const MiniSprite = styled.img`
         height: 33px;
         width: 33px
     }
+
+    &:hover{
+        cursor: pointer;
+    }
 `

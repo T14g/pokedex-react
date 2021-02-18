@@ -6,8 +6,8 @@ const RollUpAnimation = keyframes`
 `
 
 const FadeOutAnimation = keyframes`
-    0% {opacity: 1}
-    100% {opacity: 0}
+0% { opacity: 1; z-index: 9999 }
+100% { height: 0 ; z-index: -1}
 `
 
 export const PokedexCase = styled.div`
@@ -84,7 +84,45 @@ export const PokedexScreen = styled.div`
         font-size: 70px;
         text-transform: uppercase;
 
-        animation: ${FadeOutAnimation} 3s;
+        animation: ${FadeOutAnimation} 1s 1s;
         animation-fill-mode: forwards;
     }
 `
+
+export const ButtonContainer = styled.div`
+    height: 90px;
+    width: 90px;
+    background: #c7c7c7;
+    border-radius: 50%;
+    margin-left: 35px;
+    margin-top: 25px;
+`
+
+export const ButtonInner = styled.div`
+    height: 70px;
+    width: 70px;
+    background: #66CCFF;
+    border-radius: 50%;
+    margin: 0 auto;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    border: 1px #000 solid;
+    transition: 1s;
+
+    &:hover{
+        background: #37a9e2;
+        cursor: pointer;
+    }
+
+    &::after{
+        position: absolute;
+        content: "";
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background : #fff;
+        top: 10px;
+        left: 17px;
+    }
+` 
