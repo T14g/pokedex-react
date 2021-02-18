@@ -2,27 +2,32 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
     border: none;
-    background: #000;
-    color: #fff;
+    background: ${props => props.show ? '#A2E849' : '#730505'};
+    color: ${props => props.show ? '#000' : '#5f0303'};
+    border: ${props => props.show ? 'none' : '1px #000 solid'};
     padding: 10px 15px;
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
     float: right;
     margin-right: 35px;
-    margin-top: 20px;
+    margin-top: 45px;
     width: 100%;
     max-width: 200px;
+    transition: 1s;
+    border-radius: 75px;
+    font-weight: 800;
 
-    display: ${props => props.show === false ? 'none' : 'block'};
 
     &:active{
         outline:none;
     }
     
     &:hover{
-        background: blue;
-        cursor: pointer;
+        ${props => props.show ? `
+            background: #84b940;
+            cursor: pointer;
+        ` : ''}
     }
 
     @media(max-width: 800px){

@@ -85,9 +85,9 @@ const Pokedex = ({
                 }
             </PokedexScreen>
             <Loader loading={loading.toString()} />
-            <CustomButton name="Back" show={viewDetails} onClickFn={loadHome} />
+            <CustomButton name="HOME" show={viewDetails} onClickFn={loadHome} />
             <ButtonContainer>
-                <ButtonInner />
+                <ButtonInner hasPokemons={pokemonList.length} />
             </ButtonContainer>
         </PokedexCase>
     )

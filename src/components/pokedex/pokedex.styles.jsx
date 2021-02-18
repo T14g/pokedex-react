@@ -101,7 +101,7 @@ export const ButtonContainer = styled.div`
 export const ButtonInner = styled.div`
     height: 70px;
     width: 70px;
-    background: #66CCFF;
+    background: ${props => props.hasPokemons > 0 ? '#66CCFF' : '#000'};
     border-radius: 50%;
     margin: 0 auto;
     top: 50%;
@@ -111,7 +111,7 @@ export const ButtonInner = styled.div`
     transition: 1s;
 
     &:hover{
-        background: #37a9e2;
+        background: ${props => props.hasPokemons > 0 ? '#37a9e2' : '#000'};
         cursor: pointer;
     }
 

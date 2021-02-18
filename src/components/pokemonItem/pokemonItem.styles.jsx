@@ -14,6 +14,10 @@ export const PokemonContainer = styled.div`
         margin: 0 auto 10px;
         width: 200px;
     }
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 export const PokemonImg = styled.img`
