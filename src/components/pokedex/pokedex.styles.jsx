@@ -28,7 +28,7 @@ export const PokedexCase = styled.div`
 
     @media(max-width: 800px){
         max-width: 310px;
-        height: 520px;
+        height: 608px;
     }
 `
 
@@ -86,6 +86,14 @@ export const PokedexScreen = styled.div`
 
         animation: ${FadeOutAnimation} 1s 1s;
         animation-fill-mode: forwards;
+
+        @media(max-width: 800px){
+            max-width: 220px;
+            height: 200px;
+            top:180px;
+            left: calc(50% - 111px);
+            font-size: 30px;
+        }
     }
 `
 
@@ -96,6 +104,11 @@ export const ButtonContainer = styled.div`
     border-radius: 50%;
     margin-left: 35px;
     margin-top: 25px;
+
+    @media(max-width: 800px) {
+        margin-top: 15px;
+        margin-left: 23px;
+    }
 `
 
 export const ButtonInner = styled.div`

@@ -33,6 +33,6 @@ export const Button = styled.button`
     @media(max-width: 800px){
         float: none;
         max-width: 265px;
-        margin: 10px auto;
+        margin: 10px 0 0 25px;
     }
 `
