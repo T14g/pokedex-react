@@ -1,4 +1,4 @@
-# Pokedex usando React & Redux by Tiago Oliveira ( T14g )
+# Pokedex usando React & Redux by( T14g )
 ## Como rodar o projeto
 
 Faça um npm install para instalar as dependências do projeto e em seguida rode com npm start para rodar em modo de desenvolvimento.
